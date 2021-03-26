@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7E1008B7-FBEB-459C-B8E8-B9730BB28F9D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GF.BrowserGame</RootNamespace>
+    <AssemblyName>GF.BrowserGame</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Windows\Microsoft.NET\Framework\v2.0.50727\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ComaToolUri.cs" />
+    <Compile Include="Forms\About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AuthenticateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AuthenticateUser.Designer.cs">
+      <DependentUpon>AuthenticateUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\HowTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HowTo.Designer.cs">
+      <DependentUpon>HowTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Options.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Options.Designer.cs">
+      <DependentUpon>Options.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SplashScreen.Designer.cs">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TransparentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\TransparentForm.Designer.cs">
+      <DependentUpon>TransparentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UpdateCelestosCredentials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UpdateCelestosCredentials.Designer.cs">
+      <DependentUpon>UpdateCelestosCredentials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WaitingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WaitingForm.designer.cs">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginWithIE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginWithIE.Designer.cs">
+      <DependentUpon>LoginWithIE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\LoginWithUrl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\LoginWithUrl.Designer.cs">
+      <DependentUpon>LoginWithUrl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\QuickLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\QuickLogin.Designer.cs">
+      <DependentUpon>QuickLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Setup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Setup.designer.cs">
+      <DependentUpon>Setup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\UnlockApplication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UnlockApplication.Designer.cs">
+      <DependentUpon>UnlockApplication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\WindowsAuthentication.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\WindowsAuthentication.Designer.cs">
+      <DependentUpon>WindowsAuthentication.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Schema\Internal\Account.cs" />
+    <Compile Include="Schema\Internal\AnswerTemplate.cs" />
+    <Compile Include="Schema\Internal\ATLog.cs" />
+    <Compile Include="Schema\Internal\ATUser.cs" />
+    <Compile Include="Schema\Internal\CommunityTicket.cs" />
+    <Compile Include="Schema\Internal\IpLog.cs" />
+    <Compile Include="Schema\Internal\Ticket.cs" />
+    <Compile Include="Schema\Internal\TicketGUI.cs" />
+    <Compile Include="Schema\Internal\TicketMessage.cs" />
+    <Compile Include="Schema\Serializable\AppConfig.cs" />
+    <Compile Include="Schema\Serializable\ComaToolCredentials.cs" />
+    <Compile Include="Schema\Serializable\ComaToolSession.cs" />
+    <Compile Include="Schema\Serializable\NameValue.cs" />
+    <Compile Include="Schema\Serializable\Note.cs" />
+    <Compile Include="Schema\Serializable\SecureObject.cs" />
+    <Compile Include="Schema\Serializable\SetupAppObj.cs" />
+    <Compile Include="Schema\Serializable\UniverseData.cs" />
+    <Compile Include="Schema\Serializable\UniverseRole.cs" />
+    <Compile Include="Schema\Serializable\UserAppConfig.cs" />
+    <Compile Include="Schema\Serializable\UserData.cs" />
+    <Compile Include="Schema\Serializable\WebServiceSettings.cs" />
+    <Compile Include="Schema\Serializable\WebServiceUrl.cs" />
+    <Compile Include="Static\Constants.cs" />
+    <Compile Include="Static\Enums.cs" />
+    <Compile Include="GameManager.cs" />
+    <Compile Include="GameUri.cs" />
+    <Compile Include="Static\GamePostData.cs" />
+    <Compile Include="Schema\Serializable\GameSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Schema\Serializable\Community.cs" />
+    <Compile Include="Schema\Serializable\Credentials.cs" />
+    <Compile Include="Schema\Serializable\Game.cs" />
+    <Compile Include="Schema\Serializable\Universe.cs" />
+    <Compile Include="Schema\Serializable\WebClientCookie.cs" />
+    <Compile Include="Static\ParseHtml.cs" />
+    <Compile Include="TicketManager.cs" />
+    <Compile Include="UniManager.cs" />
+    <Compile Include="Utility\ComaToolWebClient.cs" />
+    <Compile Include="Utility\Converter.cs" />
+    <Compile Include="NoteManager.cs" />
+    <Compile Include="Utility\OgameServiceV1Call.cs" />
+    <Compile Include="Utility\Utilities.cs" />
+    <Compile Include="Utility\OGameWebClient.cs" />
+    <Compile Include="Web References\net.celestos.ogameServiceV1\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LibCommonUtil\LibCommonUtil.csproj">
+      <Project>{8288E542-40D9-43F2-B7B6-5BD3EAE2158F}</Project>
+      <Name>LibCommonUtil</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Forms\About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AuthenticateUser.resx">
+      <DependentUpon>AuthenticateUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\HowTo.resx">
+      <DependentUpon>HowTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Options.resx">
+      <DependentUpon>Options.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SplashScreen.resx">
+      <DependentUpon>SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TransparentForm.resx">
+      <DependentUpon>TransparentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UpdateCelestosCredentials.resx">
+      <DependentUpon>UpdateCelestosCredentials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WaitingForm.resx">
+      <DependentUpon>WaitingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginWithIE.resx">
+      <DependentUpon>LoginWithIE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginWithUrl.resx">
+      <DependentUpon>LoginWithUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\QuickLogin.resx">
+      <DependentUpon>QuickLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Setup.resx">
+      <DependentUpon>Setup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\UnlockApplication.resx">
+      <DependentUpon>UnlockApplication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\WindowsAuthentication.resx">
+      <DependentUpon>WindowsAuthentication.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajax-loader-small-bar.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajax-loader-small.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajax-loader-big-circle.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\white-loading-splash.png" />
+    <None Include="Resources\ogame-splash-screen.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard-help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ogame-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\windows_authentication.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://localhost:1618/Service.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\net.celestos.ogameServiceV1\</RelPath>
+      <UpdateFromURL>http://localhost:1618/Service.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>GF_BrowserGame_net_celestos_ogameServiceV1_Service</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\net.celestos.ogameServiceV1\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\net.celestos.ogameServiceV1\Service.disco" />
+    <None Include="Web References\net.celestos.ogameServiceV1\Service.wsdl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

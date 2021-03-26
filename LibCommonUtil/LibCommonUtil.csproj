@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8288E542-40D9-43F2-B7B6-5BD3EAE2158F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LibCommonUtil</RootNamespace>
+    <AssemblyName>LibCommonUtil</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.85.5.452, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Free Lib\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=d88dbcc0bedbbc74, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Free Lib\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.ServiceModel">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationUtil\RegistryManagement.cs" />
+    <Compile Include="DataAccess\CustomInheritedProviders.cs" />
+    <Compile Include="DataAccess\SqlConnectionString.cs" />
+    <Compile Include="DataAccess\SqlDataConnector.cs" />
+    <Compile Include="DataAccess\SqlHelper.cs" />
+    <Compile Include="EncryptionLib\BlowfishSymmetricCipher.cs" />
+    <Compile Include="EncryptionLib\Encryption.cs" />
+    <Compile Include="EncryptionLib\RandomPassword.cs" />
+    <Compile Include="EncryptionLib\RijndaelEnhanced.cs" />
+    <Compile Include="EncryptionLib\RijndaelSymmetricCipher.cs" />
+    <Compile Include="EssentialUtil\PropertyComparer.cs" />
+    <Compile Include="EssentialUtil\TimeConvertUtil.cs" />
+    <Compile Include="Updater\DownloadManager.cs" />
+    <Compile Include="Updater\UpdateManager.cs" />
+    <Compile Include="WebBrowser\CustomCertificatePolicy.cs" />
+    <Compile Include="WebBrowser\WebBrowserClient.cs" />
+    <Compile Include="WebServiceSecurity\SecureWebServiceClient.cs" />
+    <Compile Include="ZipUtil\7ZIP\Common\CommandLineParser.cs" />
+    <Compile Include="ZipUtil\7ZIP\Common\CRC.cs" />
+    <Compile Include="ZipUtil\7ZIP\Common\InBuffer.cs" />
+    <Compile Include="ZipUtil\7ZIP\Common\OutBuffer.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZMA\SevenZipHelper.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="ZipUtil\7ZIP\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="ZipUtil\7ZIP\ICoder.cs" />
+    <Compile Include="Assembly\AssemblySettings.cs" />
+    <Compile Include="ApplicationUtil\CrossThreadManagement.cs" />
+    <Compile Include="EssentialUtil\EssentialUtil.cs" />
+    <Compile Include="NetworkUtil\InternetConnection.cs" />
+    <Compile Include="ApplicationUtil\MemoryManager.cs" />
+    <Compile Include="NetworkUtil\NetworkUtilities.cs" />
+    <Compile Include="ApplicationUtil\OneInstance.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializeDeserializeObject\SerializeDeserializeObject.cs" />
+    <Compile Include="ZipUtil\MsgCompression\GZipMessageEncoderFactory.cs" />
+    <Compile Include="ZipUtil\MsgCompression\GZipMessageEncodingBindingElement.cs" />
+    <Compile Include="ZipUtil\MsgCompression\GZipMessageEncodingBindingElementImporter.cs" />
+    <Compile Include="ZipUtil\ZipUtil.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="LibCommonUtil.dll.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

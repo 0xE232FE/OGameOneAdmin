@@ -1,0 +1,911 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://ogameservicev1.azurewebsites.net" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://ogameservicev1.azurewebsites.net" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://ogameservicev1.azurewebsites.net">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="Ping">
+        <s:complexType />
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PingResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AuthHeader" type="tns:AuthHeader" />
+      <s:complexType name="AuthHeader">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ToolId" nillable="true" type="s1:guid" />
+          <s:element minOccurs="1" maxOccurs="1" name="ApplicationKey" nillable="true" type="s1:guid" />
+          <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+        </s:sequence>
+        <s:anyAttribute />
+      </s:complexType>
+      <s:element name="IsUserAccountValid">
+        <s:complexType />
+      </s:element>
+      <s:element name="IsUserAccountValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsUserAccountValidResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="computerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegisterApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegisterApplicationResult" nillable="true" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartApplicationSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="toolVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="computerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="StartApplicationSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="StartApplicationSessionResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateApplicationSessionUserId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationSessionId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="isPublicComputer" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateApplicationSessionUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateApplicationSessionUserIdResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateApplicationSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationSessionId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastActivity" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateApplicationSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateApplicationSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndApplicationSession">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationSessionId" type="s:long" />
+            <s:element minOccurs="1" maxOccurs="1" name="lastActivity" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="endTime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EndApplicationSessionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EndApplicationSessionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetupApplication">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="prevToolVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newToolVersion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetupApplicationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetupApplicationResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpgradeApplicationVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="prevToolVersion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="newToolVersion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpgradeApplicationVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpgradeApplicationVersionResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserId">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetUserIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="GetUserIdResult" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsToolValid">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="toolVersion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsToolValidResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsToolValidResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserAllowedToUseThisTool">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="IsUserAllowedToUseThisToolResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IsUserAllowedToUseThisToolResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestToolVersion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLatestToolVersionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLatestToolVersionResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserCommunityData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetUserCommunityDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetUserCommunityDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateApplicationExceptionLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stack" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="innerExceptionMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateApplicationExceptionLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateApplicationExceptionLogResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateApplicationWebClientExceptionLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="applicationKey" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="toolId" type="s1:guid" />
+            <s:element minOccurs="0" maxOccurs="1" name="type" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="url" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="description" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="message" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="stack" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="innerExceptionMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateApplicationWebClientExceptionLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CreateApplicationWebClientExceptionLogResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkUserAccountToUniverseAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="universeId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="playerId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="playerName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LinkUserAccountToUniverseAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LinkUserAccountToUniverseAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SynchronizeCredentials">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="universeId" type="s1:guid" />
+            <s:element minOccurs="1" maxOccurs="1" name="playerId" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="playerName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SynchronizeCredentialsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SynchronizeCredentialsResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAccountValidSoapIn">
+    <wsdl:part name="parameters" element="tns:IsUserAccountValid" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAccountValidSoapOut">
+    <wsdl:part name="parameters" element="tns:IsUserAccountValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAccountValidAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="RegisterApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:RegisterApplication" />
+  </wsdl:message>
+  <wsdl:message name="RegisterApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:RegisterApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="RegisterApplicationAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="StartApplicationSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:StartApplicationSession" />
+  </wsdl:message>
+  <wsdl:message name="StartApplicationSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:StartApplicationSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="StartApplicationSessionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationSessionUserId" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationSessionUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionUserIdAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationSession" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateApplicationSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateApplicationSessionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="EndApplicationSessionSoapIn">
+    <wsdl:part name="parameters" element="tns:EndApplicationSession" />
+  </wsdl:message>
+  <wsdl:message name="EndApplicationSessionSoapOut">
+    <wsdl:part name="parameters" element="tns:EndApplicationSessionResponse" />
+  </wsdl:message>
+  <wsdl:message name="EndApplicationSessionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SetupApplicationSoapIn">
+    <wsdl:part name="parameters" element="tns:SetupApplication" />
+  </wsdl:message>
+  <wsdl:message name="SetupApplicationSoapOut">
+    <wsdl:part name="parameters" element="tns:SetupApplicationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetupApplicationAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="UpgradeApplicationVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:UpgradeApplicationVersion" />
+  </wsdl:message>
+  <wsdl:message name="UpgradeApplicationVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:UpgradeApplicationVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpgradeApplicationVersionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUserIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserId" />
+  </wsdl:message>
+  <wsdl:message name="GetUserIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserIdAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IsToolValidSoapIn">
+    <wsdl:part name="parameters" element="tns:IsToolValid" />
+  </wsdl:message>
+  <wsdl:message name="IsToolValidSoapOut">
+    <wsdl:part name="parameters" element="tns:IsToolValidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsToolValidAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAllowedToUseThisToolSoapIn">
+    <wsdl:part name="parameters" element="tns:IsUserAllowedToUseThisTool" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAllowedToUseThisToolSoapOut">
+    <wsdl:part name="parameters" element="tns:IsUserAllowedToUseThisToolResponse" />
+  </wsdl:message>
+  <wsdl:message name="IsUserAllowedToUseThisToolAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestToolVersionSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLatestToolVersion" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestToolVersionSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLatestToolVersionResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLatestToolVersionAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCommunityDataSoapIn">
+    <wsdl:part name="parameters" element="tns:GetUserCommunityData" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCommunityDataSoapOut">
+    <wsdl:part name="parameters" element="tns:GetUserCommunityDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetUserCommunityDataAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationExceptionLogSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateApplicationExceptionLog" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationExceptionLogSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateApplicationExceptionLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationExceptionLogAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationWebClientExceptionLogSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateApplicationWebClientExceptionLog" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationWebClientExceptionLogSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateApplicationWebClientExceptionLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateApplicationWebClientExceptionLogAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="LinkUserAccountToUniverseAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:LinkUserAccountToUniverseAccount" />
+  </wsdl:message>
+  <wsdl:message name="LinkUserAccountToUniverseAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:LinkUserAccountToUniverseAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="LinkUserAccountToUniverseAccountAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeCredentialsSoapIn">
+    <wsdl:part name="parameters" element="tns:SynchronizeCredentials" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeCredentialsSoapOut">
+    <wsdl:part name="parameters" element="tns:SynchronizeCredentialsResponse" />
+  </wsdl:message>
+  <wsdl:message name="SynchronizeCredentialsAuthHeader">
+    <wsdl:part name="AuthHeader" element="tns:AuthHeader" />
+  </wsdl:message>
+  <wsdl:portType name="ServiceSoap">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAccountValid">
+      <wsdl:input message="tns:IsUserAccountValidSoapIn" />
+      <wsdl:output message="tns:IsUserAccountValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RegisterApplication">
+      <wsdl:input message="tns:RegisterApplicationSoapIn" />
+      <wsdl:output message="tns:RegisterApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="StartApplicationSession">
+      <wsdl:input message="tns:StartApplicationSessionSoapIn" />
+      <wsdl:output message="tns:StartApplicationSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSessionUserId">
+      <wsdl:input message="tns:UpdateApplicationSessionUserIdSoapIn" />
+      <wsdl:output message="tns:UpdateApplicationSessionUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSession">
+      <wsdl:input message="tns:UpdateApplicationSessionSoapIn" />
+      <wsdl:output message="tns:UpdateApplicationSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EndApplicationSession">
+      <wsdl:input message="tns:EndApplicationSessionSoapIn" />
+      <wsdl:output message="tns:EndApplicationSessionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetupApplication">
+      <wsdl:input message="tns:SetupApplicationSoapIn" />
+      <wsdl:output message="tns:SetupApplicationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeApplicationVersion">
+      <wsdl:input message="tns:UpgradeApplicationVersionSoapIn" />
+      <wsdl:output message="tns:UpgradeApplicationVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <wsdl:input message="tns:GetUserIdSoapIn" />
+      <wsdl:output message="tns:GetUserIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsToolValid">
+      <wsdl:input message="tns:IsToolValidSoapIn" />
+      <wsdl:output message="tns:IsToolValidSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAllowedToUseThisTool">
+      <wsdl:input message="tns:IsUserAllowedToUseThisToolSoapIn" />
+      <wsdl:output message="tns:IsUserAllowedToUseThisToolSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestToolVersion">
+      <wsdl:input message="tns:GetLatestToolVersionSoapIn" />
+      <wsdl:output message="tns:GetLatestToolVersionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCommunityData">
+      <wsdl:input message="tns:GetUserCommunityDataSoapIn" />
+      <wsdl:output message="tns:GetUserCommunityDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationExceptionLog">
+      <wsdl:input message="tns:CreateApplicationExceptionLogSoapIn" />
+      <wsdl:output message="tns:CreateApplicationExceptionLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationWebClientExceptionLog">
+      <wsdl:input message="tns:CreateApplicationWebClientExceptionLogSoapIn" />
+      <wsdl:output message="tns:CreateApplicationWebClientExceptionLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LinkUserAccountToUniverseAccount">
+      <wsdl:input message="tns:LinkUserAccountToUniverseAccountSoapIn" />
+      <wsdl:output message="tns:LinkUserAccountToUniverseAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeCredentials">
+      <wsdl:input message="tns:SynchronizeCredentialsSoapIn" />
+      <wsdl:output message="tns:SynchronizeCredentialsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:PingAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAccountValid">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/IsUserAccountValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsUserAccountValidAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterApplication">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/RegisterApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:RegisterApplicationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartApplicationSession">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/StartApplicationSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:StartApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSessionUserId">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/UpdateApplicationSessionUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateApplicationSessionUserIdAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSession">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/UpdateApplicationSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpdateApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndApplicationSession">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/EndApplicationSession" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:EndApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetupApplication">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/SetupApplication" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SetupApplicationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeApplicationVersion">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/UpgradeApplicationVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:UpgradeApplicationVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/GetUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserIdAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsToolValid">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/IsToolValid" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsToolValidAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAllowedToUseThisTool">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/IsUserAllowedToUseThisTool" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:IsUserAllowedToUseThisToolAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestToolVersion">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/GetLatestToolVersion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetLatestToolVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCommunityData">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/GetUserCommunityData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:GetUserCommunityDataAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationExceptionLog">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/CreateApplicationExceptionLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateApplicationExceptionLogAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationWebClientExceptionLog">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/CreateApplicationWebClientExceptionLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:CreateApplicationWebClientExceptionLogAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkUserAccountToUniverseAccount">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/LinkUserAccountToUniverseAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:LinkUserAccountToUniverseAccountAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeCredentials">
+      <soap:operation soapAction="https://ogameservicev1.azurewebsites.net/SynchronizeCredentials" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+        <soap:header message="tns:SynchronizeCredentialsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:PingAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAccountValid">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/IsUserAccountValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsUserAccountValidAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegisterApplication">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/RegisterApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:RegisterApplicationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StartApplicationSession">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/StartApplicationSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:StartApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSessionUserId">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/UpdateApplicationSessionUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateApplicationSessionUserIdAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateApplicationSession">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/UpdateApplicationSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpdateApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EndApplicationSession">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/EndApplicationSession" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:EndApplicationSessionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetupApplication">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/SetupApplication" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SetupApplicationAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpgradeApplicationVersion">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/UpgradeApplicationVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:UpgradeApplicationVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserId">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/GetUserId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserIdAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsToolValid">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/IsToolValid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsToolValidAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsUserAllowedToUseThisTool">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/IsUserAllowedToUseThisTool" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:IsUserAllowedToUseThisToolAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLatestToolVersion">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/GetLatestToolVersion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetLatestToolVersionAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUserCommunityData">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/GetUserCommunityData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:GetUserCommunityDataAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationExceptionLog">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/CreateApplicationExceptionLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateApplicationExceptionLogAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateApplicationWebClientExceptionLog">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/CreateApplicationWebClientExceptionLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:CreateApplicationWebClientExceptionLogAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LinkUserAccountToUniverseAccount">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/LinkUserAccountToUniverseAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:LinkUserAccountToUniverseAccountAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SynchronizeCredentials">
+      <soap12:operation soapAction="https://ogameservicev1.azurewebsites.net/SynchronizeCredentials" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+        <soap12:header message="tns:SynchronizeCredentialsAuthHeader" part="AuthHeader" use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+      <soap:address location="http://localhost:1618/Service.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+      <soap12:address location="http://localhost:1618/Service.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
